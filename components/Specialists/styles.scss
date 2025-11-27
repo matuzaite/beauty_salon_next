@@ -1,0 +1,165 @@
+.contact-container {
+  padding: 20px 0;
+  background-color: #f5f5f5;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.contact-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #28313b;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+
+.professionals-table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: inherit;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 900px;
+  table-layout: fixed;
+}
+
+.professionals-table thead {
+  background: transparent;
+  color: inherit;
+}
+
+.professionals-table th,
+.professionals-table td {
+  padding: 18px 20px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.professionals-table th {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.professionals-table td {
+  font-size: 14px;
+}
+
+.professionals-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.professionals-table a {
+  color: #0ea5e9;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+
+.professionals-table a.call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #c9a27d;
+  border: 1px solid #c9a27d;
+  color: #000;
+  padding: 8px 14px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(201, 162, 125, 0.28);
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.professionals-table a.call-btn:hover {
+  background: #d4b08f;
+  border-color: #d4b08f;
+  color: #111;
+  box-shadow: 0 3px 10px rgba(201, 162, 125, 0.35);
+}
+
+.name-position {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.name-position .name {
+  font-weight: 700;
+  color: #111827;
+}
+
+.name-position .position {
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.call-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.professionals-table a.call-btn:focus {
+  outline: 3px solid rgba(201, 162, 125, 0.55);
+  outline-offset: 3px;
+}
+
+.professionals-table tbody tr:hover {
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.professionals-table a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .contact-container h1 {
+    align-items: center;
+  }
+
+  .professionals-table thead {
+    display: none;
+  }
+
+  .professionals-table tr {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    background: #fff;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+
+  }
+
+  .professionals-table td {
+    display: block;
+    border-bottom: none;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: relative;
+  }
+
+  .professionals-table td::before {
+
+    font-weight: 600;
+    color: #475569;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+}

@@ -1,0 +1,85 @@
+/* Mobile dropdown below navbar */
+.menu-overlay {
+  position: fixed;
+  top: var(--navbar-height, 120px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  z-index: 1000;
+  overflow-y: auto;
+  opacity: 0;
+  animation: fadeOverlay 0.25s ease forwards;
+  will-change: opacity;
+}
+
+.menu-panel {
+  position: relative;
+  width: 100%;
+  padding: 1.15rem 1.6rem 2.1rem;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  color: #fff;
+  transform: translateY(-14px);
+  opacity: 0;
+  animation: panelIn 0.28s ease forwards;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+  border-top: 1px solid #222;
+  will-change: transform, opacity;
+}
+
+.menu-panel .close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-panel a,
+.menu-panel .book-btn {
+  font-size: 1.05rem;
+  text-decoration: none;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.menu-panel a:hover,
+.menu-panel .book-btn:hover {
+  color: #c9a27d;
+}
+
+.menu-panel .book-btn {
+  margin-top: 0.5rem;
+  padding: 0.7rem 1rem;
+  background: #c9a27d;
+  color: #000;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.menu-panel .book-btn:hover {
+  background: #d4b08f;
+  color: #111;
+}
+
+@keyframes fadeOverlay {
+  to { opacity: 1; }
+}
+
+@keyframes panelIn {
+  to { opacity: 1; transform: translateY(0); }
+}

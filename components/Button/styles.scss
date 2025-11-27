@@ -1,0 +1,76 @@
+
+// variables
+$btn-padding: 20px 26px;
+$btn-font-size: 1rem;
+$btn-radius: 4px;
+
+// color map for variants
+$btn-colors: (
+  primary: #7d726b,
+  secondary: #000000,
+  success: #28a745,
+  danger: #dc3545
+);
+
+// base button
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.5rem;
+  padding: $btn-padding;
+  font-size: $btn-font-size;
+  border: 0;
+  border-radius: $btn-radius;
+  cursor: pointer;
+  color: inherit;
+  transition: background-color 150ms, box-shadow 150ms;
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  z-index: 1000;
+  white-space: nowrap;
+  min-width: 200px;
+  height: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  &:focus {
+    outline: 2px solid rgba(0,0,0,0.12);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// generate variant classes from map
+@each $name, $color in $btn-colors {
+  .btn--#{$name} {
+    background-color: $color;
+    color: #ffffff;
+
+    &:hover:not(:disabled) {
+      filter: brightness(0.95);
+    }
+  }
+}
+
+// sizes
+.btn--sm { padding: 6px 10px; font-size: 0.875rem; }
+.btn--lg { padding: 12px 20px; font-size: 1.125rem; }
+
+// optional: icon only
+.btn--icon {
+  padding: 8px;
+  width: 40px;
+  justify-content: center;
+}
