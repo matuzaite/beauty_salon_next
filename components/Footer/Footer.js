@@ -7,7 +7,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer-content">
+      <div id="footer" className="footer-content">
 
         {/* Opening Times */}
         <div className="footer-section opening-times">

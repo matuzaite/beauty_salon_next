@@ -15,6 +15,22 @@ const Navbar = () => {
 
   const navRef = useRef(null);
 
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      const navbarHeight = navRef.current?.getBoundingClientRect().height || 0;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+    setIsMenuOpen(false);
+  };
+
   useLayoutEffect(() => {
     if (navRef.current) {
       const h = navRef.current.getBoundingClientRect().height;
@@ -54,13 +70,13 @@ const Navbar = () => {
 
         <ul className="navbar__links">
           <li>
-            <a href="#about">Apie Mus</a>
+            <a href="#footer" onClick={(e) => handleNavClick(e, "footer")}>Darbo Laikas</a>
           </li>
           <li>
-            <a href="#services">Paslaugos</a>
+            <a href="#services" onClick={(e) => handleNavClick(e, "services")}>Paslaugos</a>
           </li>
           <li>
-            <a href="#contact">Kontaktai</a>
+            <a href="#contact" onClick={(e) => handleNavClick(e, "contact")}>Kontaktai</a>
           </li>
         </ul>
 
