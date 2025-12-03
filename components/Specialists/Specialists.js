@@ -1,23 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
 import "./styles.scss";
 
 const Specialists = () => {
   const [specialists, setSpecialists] = useState([]);
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
     const fetchSpecialists = async () => {
-      const { data, error } = await supabase
-        .from("specialists")
-        .select("*")
-        .order("id", { ascending: true });
-
-      if (error) {
-        console.error("Supabase fetch error:", error);
-      } else {
-        setSpecialists(data || []);
+      try {
+        const res = await fetch("/api/specialists", { cache: "no-store" });
+        if (!res.ok) {
+          const payload = await res.json().catch(() => ({}));
+          throw new Error(payload.error || `Request failed: ${res.status}`);
+        }
+        const data = await res.json();
+        setSpecialists(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("Specialists API error:", err);
+        setErrorMsg("Nepavyko įkelti specialistų.");
       }
     };
 
@@ -27,6 +29,8 @@ const Specialists = () => {
   return (
     <div className="contact-container" id="contact">
       <h2>Specialistai</h2>
+
+      {errorMsg && <div className="error-note">{errorMsg}</div>}
 
       <table className="professionals-table">
         <tbody>
