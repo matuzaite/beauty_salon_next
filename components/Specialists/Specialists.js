@@ -1,17 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { supabase } from "@/lib/supabaseClient";
 import "./styles.scss";
 
 const Specialists = () => {
   const [specialists, setSpecialists] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/specialists")
-      .then(res => setSpecialists(res.data))
-      .catch(err => console.error(err));
+    const fetchSpecialists = async () => {
+      const { data, error } = await supabase
+        .from("specialists")
+        .select("*")
+        .order("id", { ascending: true });
 
+      if (error) {
+        console.error("Supabase fetch error:", error);
+      } else {
+        setSpecialists(data || []);
+      }
+    };
+
+    fetchSpecialists();
   }, []);
 
   return (
