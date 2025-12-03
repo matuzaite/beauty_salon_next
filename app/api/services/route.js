@@ -8,6 +8,7 @@ export async function GET() {
     const { rows } = await db.query("SELECT * FROM services");
     return NextResponse.json(rows);
   } catch (err) {
+    console.error("/api/services error:", err);
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
